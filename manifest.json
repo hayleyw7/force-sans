@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Light Reader",
-  "version": "1.0.1",
+  "version": "1.1",
   "description": "Light Reader: Makes all websites light mode with sans serif font",
   "permissions": ["activeTab"],
   "icons": {

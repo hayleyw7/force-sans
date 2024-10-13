@@ -12,11 +12,12 @@ Dark text on a light background, also known as light, day, or positive polarity 
 
 Sans serif fonts, which lack decorative elements, are often preferred in digital content due to their higher legibility, especially for people with visual disabilities. [Sources and researched here.](https://github.com/hayleyw7/documentation/purpose/font.md)
 
-## Considerations & Exceptions
+## Considerations & Exclusions
 
 - Both visited and unvisited links retain standard HTML colors and decoration
 - Image colors and fonts are not changed
 - Buttons colors are not changed
+- Preformatted text and elements marked as code are not changed
 
 ## Future Additions
 

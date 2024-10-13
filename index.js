@@ -1,83 +1,84 @@
 const applyTheme = () => {
-  const applyGeneralTheme = () => {
-    const style = document.createElement("style");
+  const ogBG = window.getComputedStyle(document.body).backgroundColor;
 
-    const elements = `
+  if (
+    ogBG === "rgb(255, 255, 255)" ||
+    ogBG === "white" ||
+    ogBG === "#ffffff"
+  ) {
+
+    const bgStyle = document.createElement("style");
+    bgStyle.textContent = `
+      :root {
+        --border: ##e9e9e9;
+      }
+
       html body,
-      html body input,
-      html body textarea,
-      html body select,
-
-      html body > *:not(a):not(button):not(input[type="button"]):not(input[type="submit"]):not(input[type="reset"]):not(select),
-
-      html body > * > *:not(a):not(button):not(input[type="button"]):not(input[type="submit"]):not(input[type="reset"]):not(select),
-
-      html body > div > *:not(a):not(button):not(input[type="button"]):not(input[type="submit"]):not(input[type="reset"]):not(select),
-
-      html body *:not(a):not(button):not(input[type="button"]):not(input[type="submit"]):not(input[type="reset"]):not(select)
-    `;
-
-    const css = `{
-      background-color: white !important;
-      color: black !important;
-    }`;
-
-    style.textContent = elements + css;
-    document.head.appendChild(style);
-  };
-
-  const applyLinkTheme = () => {
-    const style = document.createElement("style");
-
-    const links = `
-      a, a * {
-        color: #1A0EAB !important;
-        text-decoration: none !important;
+      * {
+        background-color: white !important;
       }
 
-      a:hover, a:hover * {
-        color: #1A0EAB !important;
-        text-decoration: underline !important;
+      header,
+      .header,
+      nav,
+      .nav {
+        border-bottom: 2px solid var(--border) !important;
       }
 
-      a:visited, a:visited * {
-        color: #9159C0 !important;
-      }
-
-      a:visited:hover, a:visited:hover * {
-        color: #9159C0 !important;
-        text-decoration: underline !important;
+      footer,
+      .footer {
+        border-top: 2px solid var(--border) !important;
       }
     `;
 
-    style.textContent = links;
-    document.head.appendChild(style);
-  };
+    document.head.appendChild(bgStyle);
 
-  applyGeneralTheme();
-  applyLinkTheme();
+    const textStyle = document.createElement("style");
+    textStyle.textContent = `
+      :root {
+        --purple: #9159C0;
+        --navy: #1A0EAB;
+      }
+
+      /* Apply text color to all elements except pre, code, svg */
+      *:not(pre):not(code):not(pre *):not(code *):not(svg) {
+        color: black !important;
+      }
+
+      a {
+        color: var(--navy) !important;
+      }
+
+      a:hover {
+        color: var(--navy) !important;
+      }
+
+      a:visited {
+        color: var(--purple) !important;
+      }
+
+      a:visited:hover {
+        color: var(--purple) !important;
+      }
+    `;
+    document.head.appendChild(textStyle);
+  }
 };
+
+// Apply the theme
+applyTheme();
 
 const applyFont = () => {
   const style = document.createElement("style");
 
-  const elements = `
-    html body, 
-    html body > *, 
-    html body > * > *, 
-    html body > * > * > *,
-    html body > * > * > * > *,
-    html body > * > * > * > * > *
+  const css = `
+    html body {
+      font-family: Tahoma, sans-serif !important;
+    }
   `;
 
-  const css = `{
-    font-family: Tahoma, sans-serif !important;
-  }`;
-
-  style.textContent = elements + css;
-
+  style.textContent = css;
   document.head.appendChild(style);
 };
 
-applyTheme();
 applyFont();
