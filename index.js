@@ -1,51 +1,33 @@
 const applyTheme = () => {
   const ogBG = window.getComputedStyle(document.body).backgroundColor;
 
-  if (
-    ogBG === "rgb(255, 255, 255)" ||
-    ogBG === "white" ||
-    ogBG === "#ffffff"
-  ) {
+  const isVeryLight = (color) => {
+    const match = color.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
+    if (!match) return false;
+    const [r, g, b] = match.slice(1).map(Number);
+    return r > 245 && g > 245 && b > 245;
+  };
 
+  if (isVeryLight(ogBG)) {
     const bgStyle = document.createElement("style");
     bgStyle.textContent = `
       :root {
-        --border: ##e9e9e9;
+        --border: #e9e9e9;
       }
 
-      html body,
-      * {
-        background-color: white !important;
-      }
-
-      header,
-      .header,
-      nav,
-      .nav {
-        border-bottom: 2px solid var(--border) !important;
-      }
-
-      footer,
-      .footer {
-        border-top: 2px solid var(--border) !important;
+      html, body, * {
+        background-color: var(--white) !important;
       }
     `;
-
     document.head.appendChild(bgStyle);
 
     const textStyle = document.createElement("style");
     textStyle.textContent = `
-      :root {
-        --purple: #9159C0;
-        --navy: #1A0EAB;
-      }
-
-      /* Apply text color to all elements except pre, code, svg */
       *:not(pre):not(code):not(pre *):not(code *):not(svg) {
-        color: black !important;
+        color: var(--black) !important;
       }
 
-      a {
+      a, a:link {
         color: var(--navy) !important;
       }
 
@@ -53,31 +35,36 @@ const applyTheme = () => {
         color: var(--navy) !important;
       }
 
-      a:visited {
+      a:visited, a:visited:link {
         color: var(--purple) !important;
       }
 
       a:visited:hover {
         color: var(--purple) !important;
       }
+
+      svg, svg * {
+        fill: var(--black) !important;
+        stroke: var(--black) !important;
+      }
+
+      [class*="!bg-"] {
+        background-color: var(--white) !important;
+      }
     `;
     document.head.appendChild(textStyle);
   }
 };
 
-// Apply the theme
 applyTheme();
 
 const applyFont = () => {
   const style = document.createElement("style");
-
-  const css = `
-    html body {
+  style.textContent = `
+    html, body, *, *::before, *::after {
       font-family: Tahoma, sans-serif !important;
     }
   `;
-
-  style.textContent = css;
   document.head.appendChild(style);
 };
 
