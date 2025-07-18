@@ -4,7 +4,7 @@
 
 ## Why Tahoma?
 
-Sans serif fonts, which lack decorative elements, are often preferred in digital content due to their higher legibility, especially for people with visual disabilities. [Sources and researched here.](https://github.com/hayleyw7/documentation/purpose/font.md)
+Sans serif fonts, which lack decorative elements, are often preferred in digital content due to their higher legibility, especially for people with visual disabilities. [Sources and research here.](https://github.com/hayleyw7/documentation/purpose/font.md)
 
 ## Contributions
 
