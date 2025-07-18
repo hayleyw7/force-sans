@@ -1,23 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "Light Reader",
-  "version": "1.1",
-  "description": "Light Reader: Makes all websites light mode with sans serif font",
+  "name": "Force Sans",
+  "version": "1.0",
+  "description": "Force Sans: Makes all website text Tahoma",
   "permissions": ["activeTab"],
-  "icons": {
-    "16": "assets/sun-16.png",
-    "32": "assets/sun-32.png",
-    "48": "assets/sun-48.png",
-    "128": "assets/sun-128.png"
-  },
-  "action": {
-    "default_icon": {
-      "16": "assets/sun-16.png",
-      "32": "assets/sun-32.png",
-      "48": "assets/sun-48.png"
-    },
-    "default_title": "Light Reader"
-  },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
